@@ -5,20 +5,23 @@
     width: 100%;
 }
 
-/* --- Hero Section --- */
+/* --- Modern Island Hero Section --- */
 .hero-section {
     position: relative;
-    background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%);
+    background: linear-gradient(135deg, rgba(27, 94, 32, 0.9) 0%, rgba(56, 142, 60, 0.9) 100%);
+    backdrop-filter: blur(10px);
     color: white;
-    padding: 6rem 2rem;
+    padding: 7rem 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 40px;
+    /* Big floating pill */
     margin-bottom: 3rem;
-    box-shadow: 0 10px 25px rgba(27, 94, 32, 0.2);
+    box-shadow: 0 15px 40px rgba(27, 94, 32, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Abstract overlay shape to make the background less flat */
@@ -28,7 +31,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
     pointer-events: none;
 }
 
@@ -39,72 +42,77 @@
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 800;
     margin: 0 0 1rem;
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: -1px;
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 400;
     opacity: 0.9;
-    margin: 0 0 2rem;
+    margin: 0 0 2.5rem;
 }
 
-/* Buttons */
+/* Island Buttons */
 .hero-actions {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     justify-content: center;
 }
 
 .btn {
-    padding: 0.8rem 1.8rem;
-    font-size: 1rem;
-    font-weight: 700;
+    padding: 1rem 2.5rem;
+    font-size: 1.05rem;
+    font-weight: 800;
     border-radius: 50px;
     cursor: pointer;
     border: none;
     font-family: inherit;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .btn-primary {
     background-color: #ffb300;
-    /* Warm accent color */
     color: #1a202c;
-    box-shadow: 0 4px 6px rgba(255, 179, 0, 0.3);
+    box-shadow: 0 8px 20px rgba(255, 179, 0, 0.3);
 }
 
 .btn-primary:hover {
     background-color: #ffca28;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(255, 179, 0, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(255, 179, 0, 0.4);
 }
 
 .btn-secondary {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
     color: white;
-    border: 2px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* --- Stats Section --- */
+/* --- Stats Island Section --- */
 .stats-section {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 2rem;
     margin-bottom: 5rem;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    padding: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    /* Pillow corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .stat-box {
@@ -166,19 +174,20 @@
 
 .service-card {
     background-color: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f1f5f9;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border-radius: 30px;
+    /* Big pill shape */
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     border-color: #cbd5e1;
 }
 
@@ -226,18 +235,23 @@
     gap: 0.6rem;
 }
 
-/* --- CTA Banner --- */
+/* --- Modern CTA Island Banner --- */
 .cta-banner {
-    background-color: #2e7d32;
-    /* Rich green */
+    background: linear-gradient(135deg, rgba(27, 94, 32, 0.95) 0%, rgba(46, 125, 50, 0.8) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: white;
-    border-radius: 12px;
+    border-radius: 30px;
+    /* Modern Pill/Island Shape */
     padding: 3rem 4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
+    box-shadow: 0 15px 35px rgba(27, 94, 32, 0.2);
+    /* Floating shadow */
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .cta-content {
@@ -245,8 +259,9 @@
 }
 
 .cta-content h2 {
-    font-size: 2rem;
+    font-size: 2.4rem;
     margin: 0 0 0.5rem;
+    font-weight: 800;
 }
 
 .cta-content p {
@@ -257,13 +272,18 @@
 
 .btn-light {
     background-color: white;
-    color: #2e7d32;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #1b5e20;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 40px;
+    /* Pill button inside Island */
+    padding: 1rem 2.5rem;
+    font-weight: 800;
 }
 
 .btn-light:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    background-color: #f8fafc;
 }
 
 /* Responsiveness */

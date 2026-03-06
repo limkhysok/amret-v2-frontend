@@ -1,19 +1,28 @@
-/* --- Green Navbar (Updated) --- */
+/* --- "Floating Island" Professional Navbar --- */
 .navbar {
-    background-color: #2e7d32;
-    /* Rich green */
+    background-color: rgba(27, 94, 32, 0.85);
+    /* Deep forest green, highly transparent */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2rem;
-    height: 80px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
+    padding: 0 1.5rem 0 2rem;
+    height: 70px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+
+    /* Island Positioning */
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1350px;
+    border-radius: 40px;
+
     z-index: 1000;
-    gap: 1.5rem;
-    /* Ensure spacing between brand, menu, and tools */
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Branding */
@@ -22,156 +31,218 @@
 }
 
 .navbar-brand .logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 1px;
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Main Desktop Menu */
 .desktop-menu {
     display: flex;
-    gap: 1.2rem;
+    gap: 0.2rem;
     align-items: center;
-    flex: 1;
-    /* take up available space */
     justify-content: center;
-    /* center the menu */
-    flex-wrap: nowrap;
+    flex: 1;
 }
 
 .nav-link {
-    color: #e8f5e9;
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.8rem;
-    /* Smaller font to fit 7 items */
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
     display: flex;
     align-items: center;
-    gap: 0.3rem;
-    /* Space between icon and text */
-    transition: color 0.2s ease, transform 0.2s ease;
+    gap: 0.4rem;
+    transition: all 0.2s ease-in-out;
     white-space: nowrap;
 }
 
 .nav-link:hover {
     color: #ffffff;
-    transform: translateY(-2px);
-    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
 }
 
 .nav-icon {
     font-size: 1.2rem;
-    /* Size of the Material Symbol */
 }
 
-/* Right-Side Action Tools */
+/* Hide drawer tools on desktop by default */
+.drawer-tools {
+    display: none;
+}
+
+/* Tools Positioning */
 .navbar-tools {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
     flex-shrink: 0;
 }
 
-/* Search Bar */
-.search-container {
-    display: flex;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    padding: 0.4rem 0.8rem;
-    transition: background-color 0.2s ease;
-}
-
-.search-container:focus-within {
-    background-color: rgba(255, 255, 255, 0.25);
-}
-
-.search-icon {
-    font-size: 1.2rem;
-    color: white;
-    margin-right: 0.4rem;
-}
-
-.search-input {
-    background: transparent;
-    border: none;
-    color: white;
-    width: 120px;
-    font-size: 0.9rem;
-    font-family: inherit;
-    outline: none;
-    transition: width 0.3s ease;
-}
-
-.search-input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.search-input:focus {
-    width: 180px;
-    /* Expands smoothly when clicked */
-}
-
-/* Language Selector */
+/* --- Custom Language Switcher --- */
 .language-selector {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
     background-color: rgba(0, 0, 0, 0.2);
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    position: relative;
+    user-select: none;
+    transition: all 0.2s ease;
 }
 
 .language-selector:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.25);
 }
 
 .lang-icon {
-    font-size: 1.2rem;
-    color: white;
+    font-size: 1.1rem;
+    color: #a7f3d0;
 }
 
-.lang-select {
-    background: transparent;
-    border: none;
+.selected-lang {
     color: white;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.dropdown-arrow {
+    font-size: 1.1rem !important;
+    color: rgba(255, 255, 255, 0.6);
+    transition: transform 0.3s ease;
+}
+
+/* Floating Custom Dropdown */
+.custom-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 150px;
+    background-color: rgba(27, 94, 32, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 0.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 2000;
+    animation: fadeInSlide 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-item {
+    padding: 0.7rem 1rem;
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 600;
     font-size: 0.85rem;
-    font-family: inherit;
-    outline: none;
-    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.2s ease;
 }
 
-.lang-select option {
-    background-color: #333;
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
     color: white;
+    transform: translateX(4px);
 }
 
-/* Mobile Toggle Button */
+/* Mobile Toggle */
 .mobile-toggle {
     display: none;
-    /* Hidden on desktop */
-    background: none;
-    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     color: white;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    z-index: 1001;
 }
 
-.mobile-toggle span {
-    font-size: 2rem;
-}
+/* --- Responsive Breakpoints --- */
+@media (max-width: 1300px) {
+    .mobile-toggle {
+        display: flex;
+    }
 
-/* Responsive Hide for Desktop Menu on Smaller Screens */
-/* 7 items plus Search takes up a lot of horizontal space, so we break to mobile earlier */
-@media (max-width: 1350px) {
-    .desktop-menu {
+    .top-desktop-tools {
         display: none;
     }
 
-    .mobile-toggle {
+    .desktop-menu {
+        position: fixed;
+        top: 6rem;
+        left: -100%;
+        width: calc(100% - 2rem);
+        max-width: 320px;
+        background-color: rgba(27, 94, 32, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 1.5rem;
+        border-radius: 30px;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+        margin-left: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        height: auto;
+        max-height: calc(100vh - 8rem);
+        overflow-y: auto;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .desktop-menu.open {
+        left: 0;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .drawer-tools {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        margin-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        top: 1rem;
+        height: 60px;
+        padding: 0 1rem;
+    }
+
+    .navbar-brand .logo {
+        font-size: 1.4rem;
     }
 }

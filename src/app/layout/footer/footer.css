@@ -1,41 +1,231 @@
 /* --- Gray Footer --- */
 .footer {
-    background-color: #334155;
-    color: #94a3b8;
-    padding: 2rem;
+    background-color: #4a4a4a;
+    /* True Gray */
+    color: #ffffff;
+    /* White text */
+    padding: 2.5rem 2rem 0;
+    /* Reduced top padding for a sleeker look */
     margin-top: auto;
+    font-family: 'DM Sans', sans-serif;
 }
 
-.footer-content {
+.footer-container {
     max-width: 1400px;
     margin: 0 auto;
+    display: grid;
+    /* Ensure columns are compact to fit all 6 neatly */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+    /* Less gap between columns */
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* Softer border */
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-heading {
+    color: #ffffff;
+    /* Pure white */
+    font-size: 0.85rem;
+    /* More compact, professional heading size */
+    font-weight: 700;
+    margin: 0 0 1rem;
+    /* Tighter margin */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
 }
 
-.footer-content p {
-    margin: 0;
-    font-size: 0.9rem;
+/* Hide expand icon on desktop by default */
+.expand-icon {
+    display: none;
 }
 
-.footer-links {
+.footer-collapsible {
+    /* On desktop, always show */
+    display: block;
+}
+
+.footer-list {
     list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 
-.footer-links a {
-    color: #cbd5e1;
+.footer-list li {
+    margin-bottom: 0.5rem;
+    /* Tighter line-height */
+}
+
+.footer-list a {
+    color: #f1f5f9;
+    /* Off-white for readability */
+    /* Calmer slate gray */
+    text-decoration: none;
+    font-size: 0.8rem;
+    /* Smaller, cleaner text */
+    transition: color 0.15s ease;
+    display: inline-block;
+}
+
+.footer-list a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Contact Info inside Column 6 */
+.connect-section {
+    margin-top: 1.5rem;
+    /* Space before CONNECT WITH US */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    /* Smaller */
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.footer-contact .material-symbols-outlined {
+    color: #ffffff;
+    font-size: 1.1rem;
+    /* Smaller icon */
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    /* Tighter grouping */
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    /* Smaller button */
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Make bolder on gray */
+    color: #ffffff;
+    /* Weaker contrast until hovered */
+    border-radius: 50%;
     text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.2s ease;
+    /* Smaller icon inside */
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.footer-links a:hover {
-    color: #ffffff;
+.social-link:hover {
+    background-color: #2e7d32;
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* --- Bottom Copyright --- */
+.footer-bottom {
+    text-align: center;
+    padding: 1rem 0;
+    /* Thinner bottom strip */
+    font-size: 0.75rem;
+    /* Very subtle text */
+    color: #e2e8f0;
+    /* Lighter color on gray background */
+    /* Darker gray so it fades into background */
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- Media Queries --- */
+
+@media (max-width: 1024px) {
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Enable Accordion Logic below 768px */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .footer-col {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        /* Divider between rows */
+    }
+
+    .footer-col:last-child {
+        border-bottom: none;
+    }
+
+    /* Make headings clickable targets */
+    .footer-heading {
+        margin: 0;
+        padding: 1rem 0;
+        cursor: pointer;
+    }
+
+    /* Disconnect CONNECT WITH US from the accordion styling */
+    .connect-heading {
+        cursor: default;
+        padding-bottom: 0.5rem;
+    }
+
+    /* Show the drop-down arrows */
+    .expand-icon {
+        display: block;
+        transition: transform 0.3s ease;
+        font-size: 1.5rem;
+    }
+
+    /* Hide the lists by default */
+    .footer-collapsible {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    }
+
+    /* Expand the list when the parent column has the .expanded class */
+    .footer-col.expanded .footer-collapsible {
+        max-height: 400px;
+        /* arbitrary high enough value */
+        padding-bottom: 1rem;
+    }
+
+    /* Flip arrow when open */
+    .footer-col.expanded .expand-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Center the social stuff if we want, or keep it left-aligned */
+    .connect-section {
+        padding-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-bottom {
+        font-size: 0.7rem;
+    }
 }

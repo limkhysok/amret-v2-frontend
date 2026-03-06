@@ -7,58 +7,67 @@
     </div>
 
     <!-- Main Desktop Menu -->
-    <nav class="desktop-menu">
-        <a routerLink="/home" class="nav-link">
+    <nav class="desktop-menu" [class.open]="isMobileMenuOpen">
+        <a routerLink="/home" class="nav-link" (click)="isMobileMenuOpen = false">
             <span class="material-symbols-outlined nav-icon">home</span>
             HOME
         </a>
-        <a routerLink="/about" class="nav-link">
+        <a routerLink="/about" class="nav-link" (click)="isMobileMenuOpen = false">
             <span class="material-symbols-outlined nav-icon">info</span>
             ABOUT US
         </a>
-        <a routerLink="/products" class="nav-link">
+        <a routerLink="/products" class="nav-link" (click)="isMobileMenuOpen = false">
             <span class="material-symbols-outlined nav-icon">inventory_2</span>
             PRODUCTS & SERVICES
         </a>
-        <a routerLink="/protection" class="nav-link">
-            <span class="material-symbols-outlined nav-icon">health_and_safety</span>
-            CLIENT PROTECTION
+        <!-- Merged PROTECTION section -->
+        <a routerLink="/protection" class="nav-link" (click)="isMobileMenuOpen = false">
+            <span class="material-symbols-outlined nav-icon">security</span>
+            PROTECTION
         </a>
-        <a routerLink="/environment" class="nav-link">
-            <span class="material-symbols-outlined nav-icon">eco</span>
-            ENVIRONMENT & SOCIAL
-        </a>
-        <a routerLink="/media" class="nav-link">
+        <a routerLink="/media" class="nav-link" (click)="isMobileMenuOpen = false">
             <span class="material-symbols-outlined nav-icon">perm_media</span>
             MEDIA
         </a>
-        <a routerLink="/careers" class="nav-link">
+        <a routerLink="/careers" class="nav-link" (click)="isMobileMenuOpen = false">
             <span class="material-symbols-outlined nav-icon">work</span>
             CAREERS
         </a>
+
+        <!-- Tools for Mobile Drawer Menu -->
+        <div class="drawer-tools">
+            <!-- Custom Language Switcher (Mobile) -->
+            <div class="language-selector" (click)="toggleLangDropdown($event)">
+                <span class="material-symbols-outlined lang-icon">translate</span>
+                <span class="selected-lang">{{currentLang}}</span>
+                <span class="material-symbols-outlined dropdown-arrow">expand_more</span>
+
+                <div class="custom-dropdown" *ngIf="isLangDropdownOpen">
+                    <div class="dropdown-item" (click)="setLanguage('ENGLISH')">ENGLISH</div>
+                    <div class="dropdown-item" (click)="setLanguage('KHMER')">KHMER</div>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <!-- Right-Side Action Tools -->
     <div class="navbar-tools">
 
-        <!-- Search Bar -->
-        <div class="search-container">
-            <span class="material-symbols-outlined search-icon">search</span>
-            <input type="text" class="search-input" placeholder="Search...">
-        </div>
-
-        <!-- Language Selector -->
-        <div class="language-selector">
+        <!-- Custom Language Selector (Desktop) -->
+        <div class="language-selector top-desktop-tools" (click)="toggleLangDropdown($event)">
             <span class="material-symbols-outlined lang-icon">translate</span>
-            <select class="lang-select">
-                <option value="en">ENGLISH</option>
-                <option value="km">KHMER</option>
-            </select>
+            <span class="selected-lang">{{currentLang}}</span>
+            <span class="material-symbols-outlined dropdown-arrow">expand_more</span>
+
+            <div class="custom-dropdown" *ngIf="isLangDropdownOpen">
+                <div class="dropdown-item" (click)="setLanguage('ENGLISH')">ENGLISH</div>
+                <div class="dropdown-item" (click)="setLanguage('KHMER')">KHMER</div>
+            </div>
         </div>
 
-        <!-- Mobile Menu Icon (Visible only on small screens) -->
-        <button class="mobile-toggle">
-            <span class="material-symbols-outlined">menu</span>
+        <!-- Mobile Menu Icon -->
+        <button class="mobile-toggle" (click)="toggleMobileMenu()">
+            <span class="material-symbols-outlined">{{ isMobileMenuOpen ? 'close' : 'menu' }}</span>
         </button>
 
     </div>
