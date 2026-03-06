@@ -1,0 +1,177 @@
+/* --- Green Navbar (Updated) --- */
+.navbar {
+    background-color: #2e7d32;
+    /* Rich green */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 80px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    gap: 1.5rem;
+    /* Ensure spacing between brand, menu, and tools */
+}
+
+/* Branding */
+.navbar-brand {
+    flex-shrink: 0;
+}
+
+.navbar-brand .logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* Main Desktop Menu */
+.desktop-menu {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    flex: 1;
+    /* take up available space */
+    justify-content: center;
+    /* center the menu */
+    flex-wrap: nowrap;
+}
+
+.nav-link {
+    color: #e8f5e9;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    /* Smaller font to fit 7 items */
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    /* Space between icon and text */
+    transition: color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+    /* Size of the Material Symbol */
+}
+
+/* Right-Side Action Tools */
+.navbar-tools {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 0.4rem 0.8rem;
+    transition: background-color 0.2s ease;
+}
+
+.search-container:focus-within {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.search-icon {
+    font-size: 1.2rem;
+    color: white;
+    margin-right: 0.4rem;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 120px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: width 0.3s ease;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-input:focus {
+    width: 180px;
+    /* Expands smoothly when clicked */
+}
+
+/* Language Selector */
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.language-selector:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.lang-icon {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.lang-select {
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+}
+
+.lang-select option {
+    background-color: #333;
+    color: white;
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+    display: none;
+    /* Hidden on desktop */
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.mobile-toggle span {
+    font-size: 2rem;
+}
+
+/* Responsive Hide for Desktop Menu on Smaller Screens */
+/* 7 items plus Search takes up a lot of horizontal space, so we break to mobile earlier */
+@media (max-width: 1350px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: flex;
+        align-items: center;
+    }
+}
