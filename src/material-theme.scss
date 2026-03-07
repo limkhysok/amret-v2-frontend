@@ -1,0 +1,29 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Amret Material 3 Theme — custom green brand palette
+// ─────────────────────────────────────────────────────────────────────────────
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+
+  @include mat.theme((color: (primary: mat.$green-palette,
+      ),
+      typography: 'DM Sans',
+      density: 0,
+    ));
+
+  // Override key brand tokens to match exact Amret green
+  --mat-sys-primary: #065f46;
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: #d1fae5;
+  --mat-sys-on-primary-container: #003b27;
+}
+
+body {
+  color-scheme: light;
+  background-color: #f0f4f2;
+  color: #111827;
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  height: 100%;
+}

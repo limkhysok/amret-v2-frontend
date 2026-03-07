@@ -1,29 +1,26 @@
-/* --- Gray Floating Island Footer --- */
+/* ─── Floating Island Footer ─── */
 .footer {
-    background-color: #4a4a4a;
-    /* True Gray */
+    background-color: #2d3035;
     color: #ffffff;
     width: 95%;
     max-width: 1350px;
     margin: 0 auto 3rem;
     border-radius: 40px;
     padding: 3rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     font-family: 'DM Sans', sans-serif;
     position: relative;
     z-index: 10;
     box-sizing: border-box;
 }
 
-.footer-container {
-    max-width: 1400px;
-    margin: 0 auto;
+/* Desktop grid */
+.desktop-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 1.5rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .footer-col {
@@ -33,74 +30,57 @@
 
 .footer-heading {
     color: #ffffff;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     margin: 0 0 1rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.expand-icon {
-    display: none;
-}
-
-.footer-collapsible {
-    display: block;
 }
 
 .footer-list {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.footer-list li {
-    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
 }
 
 .footer-list a {
-    color: #f1f5f9;
+    color: #cbd5e1;
     text-decoration: none;
     font-size: 0.8rem;
     transition: color 0.15s ease;
-    display: inline-block;
 }
 
 .footer-list a:hover {
-    color: #ffffff;
-    text-decoration: underline;
+    color: #a7f3d0;
 }
 
-.connect-section {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* Connect column */
+.connect-col {
+    align-items: flex-start;
 }
 
 .footer-contact {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
     font-size: 0.9rem;
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 1rem;
 }
 
-.footer-contact .material-symbols-outlined {
-    color: #ffffff;
-    font-size: 1.1rem;
+.footer-contact mat-icon {
+    font-size: 1.15rem !important;
+    width: 1.15rem !important;
+    height: 1.15rem !important;
+    color: #a7f3d0;
 }
 
 .social-icons {
     display: flex;
-    justify-content: center;
     gap: 0.6rem;
     flex-wrap: wrap;
 }
@@ -111,103 +91,103 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     color: #ffffff;
     border-radius: 50%;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: all 0.2s ease;
 }
 
 .social-link:hover {
-    background-color: #2e7d32;
+    background: #065f46;
     transform: translateY(-2px);
-    color: white;
 }
 
+/* Material divider override */
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    margin: 0.5rem 0 1.25rem !important;
+}
+
+/* Footer bottom */
 .footer-bottom {
     text-align: center;
-    padding: 1rem 0;
     font-size: 0.75rem;
-    color: #e2e8f0;
-    max-width: 1400px;
-    margin: 0 auto;
+    color: #94a3b8;
 }
 
-/* --- Media Queries --- */
-@media (max-width: 1024px) {
-    .footer {
-        padding: 2.5rem 2rem;
-    }
-
-    .footer-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.footer-bottom p {
+    margin: 0;
 }
 
+/* ─── Mobile accordion (hidden on desktop) ─── */
+.mobile-accordion,
+.mobile-connect {
+    display: none;
+}
+
+/* Mat expansion overrides for dark footer */
+::ng-deep .footer-panel {
+    background: transparent !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+::ng-deep .footer-panel .mat-expansion-panel-header {
+    color: #ffffff !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    padding: 1rem 0 !important;
+}
+
+::ng-deep .footer-panel .mat-expansion-indicator::after {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+::ng-deep .footer-panel .mat-expansion-panel-body {
+    padding: 0 0 1rem !important;
+    color: #cbd5e1 !important;
+}
+
+/* ─── Responsive ─── */
 @media (max-width: 768px) {
     .footer {
-        border-radius: 30px;
-        margin-bottom: 2rem;
         padding: 2rem 1.5rem;
+        border-radius: 28px;
+        margin-bottom: 2rem;
     }
 
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 0;
+    .desktop-grid {
+        display: none;
     }
 
-    .footer-col {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer-col:last-child {
-        border-bottom: none;
-    }
-
-    .footer-heading {
-        margin: 0;
-        padding: 1rem 0;
-        cursor: pointer;
-    }
-
-    .connect-heading {
-        cursor: default;
-        padding-bottom: 0.5rem;
-    }
-
-    .expand-icon {
+    .mobile-accordion,
+    .mobile-connect {
         display: block;
-        transition: transform 0.3s ease;
-        font-size: 1.5rem;
     }
 
-    .footer-collapsible {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    .mobile-connect {
+        margin-top: 1.25rem;
+        text-align: center;
     }
 
-    .footer-col.expanded .footer-collapsible {
-        max-height: 400px;
-        padding-bottom: 1rem;
+    .mobile-connect .footer-contact {
+        justify-content: center;
     }
 
-    .footer-col.expanded .expand-icon {
-        transform: rotate(180deg);
-    }
-
-    .connect-section {
-        padding-bottom: 1rem;
+    .mobile-connect .social-icons {
+        justify-content: center;
     }
 }
 
 @media (max-width: 480px) {
     .footer {
         padding: 1.5rem 1rem;
-    }
-
-    .footer-bottom {
-        font-size: 0.7rem;
     }
 }

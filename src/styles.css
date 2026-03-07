@@ -1,24 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
-html {
-  overflow-x: hidden;
-  /* CRITICAL: Prevent any element from expanding the page beyond viewport width */
-  width: 100%;
-}
-
+/* ─────────────────────────────────────────────────────────────────
+   Global resets & utilities — Amret v2
+   (Material theme tokens live in material-theme.scss)
+   ───────────────────────────────────────────────────────────────── */
+html,
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-  width: 100%;
   overflow-x: hidden;
-  /* Belt-and-suspenders: block horizontal scroll at body level too */
-  font-family: 'DM Sans', sans-serif;
-  background-color: #f5f7f9;
-  color: #333333;
+  width: 100%;
 }
 
 * {
   box-sizing: border-box;
   min-width: 0;
-  /* Allows flex/grid children to shrink below content size - critical for responsiveness */
+}
+
+/* Material icon baseline fix */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
 }

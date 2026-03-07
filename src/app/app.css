@@ -1,34 +1,32 @@
-/* Base layout flex container to push footer down */
+/* ─── Root layout ─── */
 .layout-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     width: 100%;
     max-width: 100vw;
-    /* Hard cap to viewport width */
     position: relative;
     background-color: #f0f4f2;
     overflow-x: hidden;
-    /* Prevent any child island from expanding the page */
 }
 
-/* --- Floating Background Bubbles --- */
+/* ─── Floating background ambient glows ─── */
 .bg-glow {
     position: fixed;
     border-radius: 50%;
     filter: blur(80px);
     z-index: 0;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.45;
     animation: float 20s infinite alternate;
 }
 
 .bg-glow-1 {
-    width: 400px;
-    height: 400px;
+    width: 420px;
+    height: 420px;
     background: radial-gradient(circle, #2e7d32, transparent);
-    top: -100px;
-    right: -100px;
+    top: -120px;
+    right: -120px;
 }
 
 .bg-glow-2 {
@@ -41,12 +39,12 @@
 }
 
 .bg-glow-3 {
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     background: radial-gradient(circle, #ffb300, transparent);
     top: 40%;
     left: 10%;
-    opacity: 0.2;
+    opacity: 0.18;
     animation-delay: -10s;
 }
 
@@ -60,10 +58,10 @@
     }
 }
 
-/* --- Content Area --- */
+/* ─── Content wrapper ─── */
 .content-wrapper {
     flex: 1;
-    margin-top: 120px;
+    margin-top: 110px;
     padding-bottom: 5rem;
     display: flex;
     flex-direction: column;
@@ -72,42 +70,11 @@
     z-index: 1;
     width: 100%;
     max-width: 100%;
-    /* Don't let the wrapper expand beyond viewport */
     overflow-x: hidden;
 }
 
 @media (max-width: 600px) {
     .content-wrapper {
-        margin-top: 90px;
-        /* Less gap on mobile: smaller floating nav */
-    }
-}
-
-/* Base Page Island - can be used by any page component */
-.page-island {
-    width: 100%;
-    /* Let it be fluid */
-    max-width: 1350px;
-    padding: 0 2.5%;
-    /* Provide nice side margins without overflow */
-    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-@media (max-width: 600px) {
-    .page-island {
-        padding: 0 1rem;
-        /* Tighter mobile gutter */
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+        margin-top: 85px;
     }
 }

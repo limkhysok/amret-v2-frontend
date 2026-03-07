@@ -1,214 +1,123 @@
 <div class="home-container page-island">
 
-    <!-- Section 1: Infinite Carousel -->
+    <!-- ── Section 1: Marquee Carousel ── -->
     <section class="home-carousel-island">
         <div class="carousel-marquee">
             <div class="marquee-content">
-                <!-- 10 Images Looping: Certificates, Awards, Office, Environment, HQ -->
-                <img src="https://images.unsplash.com/photo-1589330694653-7681cad4482c?q=80&w=800&auto=format&fit=crop"
-                    alt="Certification">
-                <img src="https://images.unsplash.com/photo-1578574577315-3fbeb0cecdc2?q=80&w=800&auto=format&fit=crop"
-                    alt="Award Prize">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
-                    alt="Modern Office">
-                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800&auto=format&fit=crop"
-                    alt="Sustainable Environment">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
-                    alt="Top Ranking HQ">
-                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop"
-                    alt="Achievement">
-                <img src="https://images.unsplash.com/photo-1569012871812-f38ee6fc0528?q=80&w=800&auto=format&fit=crop"
-                    alt="Certificate">
-                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop"
-                    alt="Professional Workspace">
-                <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=800&auto=format&fit=crop"
-                    alt="Sleek Building">
-                <img src="https://images.unsplash.com/photo-1621245190994-010419356076?q=80&w=800&auto=format&fit=crop"
-                    alt="Official Certificate">
-
+                @for (img of carouselImages; track img.alt) {
+                <img [src]="img.src" [alt]="img.alt" loading="lazy">
+                }
                 <!-- Duplicate for seamless loop -->
-                <img src="https://images.unsplash.com/photo-1589330694653-7681cad4482c?q=80&w=800&auto=format&fit=crop"
-                    alt="Certification">
-                <img src="https://images.unsplash.com/photo-1578574577315-3fbeb0cecdc2?q=80&w=800&auto=format&fit=crop"
-                    alt="Award Prize">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
-                    alt="Modern Office">
-                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800&auto=format&fit=crop"
-                    alt="Sustainable Environment">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
-                    alt="Top Ranking HQ">
-                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop"
-                    alt="Achievement">
-                <img src="https://images.unsplash.com/photo-1569012871812-f38ee6fc0528?q=80&w=800&auto=format&fit=crop"
-                    alt="Certificate">
-                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop"
-                    alt="Professional Workspace">
-                <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=800&auto=format&fit=crop"
-                    alt="Sleek Building">
-                <img src="https://images.unsplash.com/photo-1621245190994-010419356076?q=80&w=800&auto=format&fit=crop"
-                    alt="Official Certificate">
+                @for (img of carouselImages; track img.alt + '_dup') {
+                <img [src]="img.src" [alt]="img.alt" loading="lazy">
+                }
             </div>
         </div>
     </section>
 
-    <!-- Section 2: Key Figures Island -->
+    <!-- ── Section 2: Key Figures ── -->
     <section class="key-figures-island island-section">
         <div class="island-header center">
-            <span class="eyebrow">REACH & PERFORMANCE</span>
+            <span class="eyebrow">Reach &amp; Performance</span>
             <h2>Key Figures: January 2026</h2>
         </div>
-
         <div class="figures-grid">
-            <div class="figure-card">
-                <span class="figure-value">$ 1,965 M</span>
-                <span class="figure-label">Current Assets</span>
-            </div>
-            <div class="figure-card">
-                <span class="figure-value">$ 1,459 M</span>
-                <span class="figure-label">Deposit Portfolio</span>
-            </div>
-            <div class="figure-card">
-                <span class="figure-value">$ 1,642 M</span>
-                <span class="figure-label">Loan Portfolio</span>
-            </div>
-            <div class="figure-card">
-                <span class="figure-value">856,402</span>
-                <span class="figure-label">Clients</span>
-            </div>
+            @for (fig of figures; track fig.label) {
+            <mat-card class="figure-card" appearance="outlined">
+                <mat-card-content>
+                    <span class="figure-value">{{ fig.value }}</span>
+                    <span class="figure-label">{{ fig.label }}</span>
+                </mat-card-content>
+            </mat-card>
+            }
         </div>
     </section>
 
-    <!-- Section 3: Products and Services Island -->
+    <!-- ── Section 3: Products & Services ── -->
     <section class="products-island island-section">
         <div class="island-header">
             <h2>Products and Services</h2>
-            <p>We provide tailored-made services for customers all walks of life.</p>
+            <p>We provide tailored-made services for customers from all walks of life.</p>
         </div>
-
         <div class="products-grid">
-            <div class="product-card">
-                <div class="product-icon-box">
-                    <span class="material-symbols-outlined">payments</span>
-                </div>
-                <div class="product-content">
-                    <h3>Loans</h3>
-                    <p>Fast and tailored loan to your needs</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-icon-box">
-                    <span class="material-symbols-outlined">savings</span>
-                </div>
-                <div class="product-content">
-                    <h3>Savings</h3>
-                    <p>Safe and high returns accounts to realize your dream</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-icon-box">
-                    <span class="material-symbols-outlined">sync_alt</span>
-                </div>
-                <div class="product-content">
-                    <h3>Transactions</h3>
-                    <p>Pay and transfer at your convenience</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-icon-box">
-                    <span class="material-symbols-outlined">verified_user</span>
-                </div>
-                <div class="product-content">
-                    <h3>Insurance</h3>
-                    <p>Life and credit insurance to secure your future</p>
-                </div>
-            </div>
+            @for (p of products; track p.title) {
+            <mat-card class="product-card" appearance="outlined">
+                <mat-card-content>
+                    <div class="product-icon-box">
+                        <mat-icon fontSet="material-symbols-outlined">{{ p.icon }}</mat-icon>
+                    </div>
+                    <h3>{{ p.title }}</h3>
+                    <p>{{ p.desc }}</p>
+                </mat-card-content>
+            </mat-card>
+            }
         </div>
     </section>
 
-    <!-- Section 4: Calculators Section -->
+    <!-- ── Section 4: Calculator ── -->
     <section class="calculator-section-island island-section">
         <div class="island-header center">
             <h2>Calculate Your Loan or Saving</h2>
-            <p>Whether you are looking to save for the future project or determine the amount of loan you can afford,
-                these convenient calculators can help you make sense of your budget.</p>
-            <p class="sub-instruction">Start by selecting one of the calculators to help determine your savings or loan
-                options.</p>
+            <p>
+                Whether you are looking to save for the future or determine the loan you can afford,
+                these convenient calculators can help you make sense of your budget.
+            </p>
         </div>
-
         <div class="calculator-actions">
-            <div class="calc-card">
-                <div class="calc-icon">
-                    <span class="material-symbols-outlined">calculate</span>
-                </div>
-                <h3>Loan Calculator</h3>
-                <button class="btn btn-primary">Calculate Loan</button>
-            </div>
-            <div class="calc-card">
-                <div class="calc-icon">
-                    <span class="material-symbols-outlined">account_balance</span>
-                </div>
-                <h3>Savings Calculator</h3>
-                <button class="btn btn-secondary-dark">Calculate Savings</button>
-            </div>
+            <mat-card class="calc-card" appearance="outlined">
+                <mat-card-content>
+                    <div class="calc-icon">
+                        <mat-icon fontSet="material-symbols-outlined">calculate</mat-icon>
+                    </div>
+                    <h3>Loan Calculator</h3>
+                    <button mat-flat-button class="calc-btn primary-btn">Calculate Loan</button>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="calc-card" appearance="outlined">
+                <mat-card-content>
+                    <div class="calc-icon">
+                        <mat-icon fontSet="material-symbols-outlined">account_balance</mat-icon>
+                    </div>
+                    <h3>Savings Calculator</h3>
+                    <button mat-flat-button class="calc-btn secondary-btn">Calculate Savings</button>
+                </mat-card-content>
+            </mat-card>
         </div>
     </section>
 
-    <!-- Section 5: Latest News Section -->
+    <!-- ── Section 5: Latest News ── -->
     <section class="news-section island-section">
         <div class="island-header">
             <h2>Latest News</h2>
             <p>Stay updated with our latest activities and institutional announcements.</p>
         </div>
-
         <div class="news-grid">
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1531050171651-73892621151d?q=80&w=800&auto=format&fit=crop"
-                    alt="News 1">
-                <div class="news-content">
-                    <span class="news-date">March 05, 2026</span>
-                    <h3>Amret Awarded "Best MFI in Cambodia" for 2025</h3>
-                    <p>We are proud to announce that Amret has received international recognition for its inclusive
-                        financial services...</p>
-                    <a href="#" class="news-link">Read More</a>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?q=80&w=800&auto=format&fit=crop"
-                    alt="News 2">
-                <div class="news-content">
-                    <span class="news-date">February 28, 2026</span>
-                    <h3>New Branch Opening in Mondulkiri Province</h3>
-                    <p>Expanding our reach to serve the community better. Visit our new branch for all your financial
-                        needs...</p>
-                    <a href="#" class="news-link">Read More</a>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=800&auto=format&fit=crop"
-                    alt="News 3">
-                <div class="news-content">
-                    <span class="news-date">February 15, 2026</span>
-                    <h3>Financial Literacy Program Reaches 10,000 Students</h3>
-                    <p>Empowering the next generation with essential money management skills across nationwide
-                        schools...</p>
-                    <a href="#" class="news-link">Read More</a>
-                </div>
-            </div>
+            @for (article of news; track article.title) {
+            <mat-card class="news-card" appearance="outlined">
+                <img mat-card-image [src]="article.img" [alt]="article.title" loading="lazy">
+                <mat-card-content>
+                    <span class="news-date">{{ article.date }}</span>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.excerpt }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <a href="#" mat-button class="news-link-btn">Read More</a>
+                </mat-card-actions>
+            </mat-card>
+            }
         </div>
     </section>
 
-    <!-- Section 6: Mobile Banking Section -->
+    <!-- ── Section 6: Mobile Banking ── -->
     <section class="mobile-banking-island">
         <div class="mobile-grid">
             <div class="mobile-text">
                 <h2>Everyday Banking Services at Your Fingertips</h2>
-                <p>Manage your account, transfer money, and pay bills anytime, anywhere with the Amret Mobile App.
-                    Secure, fast, and easy to use.</p>
+                <p>
+                    Manage your account, transfer money, and pay bills anytime, anywhere
+                    with the Amret Mobile App. Secure, fast, and easy to use.
+                </p>
                 <div class="store-buttons">
                     <a href="#" class="store-btn">
                         <i class="fab fa-google-play"></i>
@@ -223,7 +132,7 @@
             <div class="mobile-visual">
                 <div class="phone-mockup">
                     <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=800&auto=format&fit=crop"
-                        alt="Amret App">
+                        alt="Amret Mobile App" loading="lazy">
                 </div>
             </div>
         </div>

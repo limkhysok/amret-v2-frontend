@@ -1,130 +1,73 @@
-<!-- Footer -->
 <footer class="footer">
     <div class="footer-container">
 
-        <!-- Column 1: LOANS -->
-        <div class="footer-col" [class.expanded]="openColumn === 1">
-            <h4 class="footer-heading" (click)="toggleColumn(1)">
-                <span>LOANS</span>
-                <span class="material-symbols-outlined expand-icon">expand_more</span>
-            </h4>
-            <div class="footer-collapsible">
+        <!-- ── Desktop Grid (≥768 px) ── -->
+        <div class="desktop-grid">
+            @for (col of columns; track col.heading) {
+            <div class="footer-col">
+                <h4 class="footer-heading">{{ col.heading }}</h4>
                 <ul class="footer-list">
-                    <li><a href="#">Micro Loans</a></li>
-                    <li><a href="#">SME Loans</a></li>
-                    <li><a href="#">Agricultural Loans</a></li>
-                    <li><a href="#">Solidarity Group Loans</a></li>
-                    <li><a href="#">Personal Loans</a></li>
+                    @for (link of col.links; track link) {
+                    <li><a href="#">{{ link }}</a></li>
+                    }
                 </ul>
             </div>
-        </div>
+            }
 
-        <!-- Column 2: SAVINGS -->
-        <div class="footer-col" [class.expanded]="openColumn === 2">
-            <h4 class="footer-heading" (click)="toggleColumn(2)">
-                <span>SAVINGS</span>
-                <span class="material-symbols-outlined expand-icon">expand_more</span>
-            </h4>
-            <div class="footer-collapsible">
-                <ul class="footer-list">
-                    <li><a href="#">Current Accounts</a></li>
-                    <li><a href="#">Savings Accounts</a></li>
-                    <li><a href="#">Fixed Deposits</a></li>
-                    <li><a href="#">Kids Savings</a></li>
-                    <li><a href="#">Retirement Savings</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Column 3: TRANSACTION -->
-        <div class="footer-col" [class.expanded]="openColumn === 3">
-            <h4 class="footer-heading" (click)="toggleColumn(3)">
-                <span>TRANSACTION</span>
-                <span class="material-symbols-outlined expand-icon">expand_more</span>
-            </h4>
-            <div class="footer-collapsible">
-                <ul class="footer-list">
-                    <li><a href="#">Local Fund Transfer</a></li>
-                    <li><a href="#">International Transfer</a></li>
-                    <li><a href="#">Bill Payment</a></li>
-                    <li><a href="#">Payroll Service</a></li>
-                    <li><a href="#">Bakong Transfer</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Column 4: RESOURCES -->
-        <div class="footer-col" [class.expanded]="openColumn === 4">
-            <h4 class="footer-heading" (click)="toggleColumn(4)">
-                <span>RESOURCES</span>
-                <span class="material-symbols-outlined expand-icon">expand_more</span>
-            </h4>
-            <div class="footer-collapsible">
-                <ul class="footer-list">
-                    <li><a href="#">News & Updates</a></li>
-                    <li><a href="#">Interest Rates</a></li>
-                    <li><a href="#">Exchange Rates</a></li>
-                    <li><a href="#">Download Forms</a></li>
-                    <li><a href="#">Annual Reports</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Column 5: SUPPORTS -->
-        <div class="footer-col" [class.expanded]="openColumn === 5">
-            <h4 class="footer-heading" (click)="toggleColumn(5)">
-                <span>SUPPORTS</span>
-                <span class="material-symbols-outlined expand-icon">expand_more</span>
-            </h4>
-            <div class="footer-collapsible">
-                <ul class="footer-list">
-                    <li><a href="#">Find a Branch</a></li>
-                    <li><a href="#">Find an ATM</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Feedback & Complaints</a></li>
-                    <li><a href="#">Security Tips</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Column 6: PARENT COMPANY & SOCIAL -->
-        <div class="footer-col" [class.expanded]="openColumn === 6">
-            <h4 class="footer-heading" (click)="toggleColumn(6)">
-                <span>PARENT COMPANY</span>
-                <span class="material-symbols-outlined expand-icon">expand_more</span>
-            </h4>
-            <div class="footer-collapsible">
-                <ul class="footer-list">
-                    <li><a href="#">Advans Group</a></li>
-                    <li><a href="#">FMO</a></li>
-                    <li><a href="#">IFC</a></li>
-                </ul>
-            </div>
-
-            <div class="connect-section">
-                <h4 class="footer-heading connect-heading">CONNECT WITH US</h4>
-
-                <!-- Contact Info -->
+            <!-- Connect column -->
+            <div class="footer-col connect-col">
+                <h4 class="footer-heading">Connect With Us</h4>
                 <div class="footer-contact">
-                    <span class="material-symbols-outlined">phone_in_talk</span>
+                    <mat-icon fontSet="material-symbols-outlined">phone_in_talk</mat-icon>
                     <span>023 999 000</span>
                 </div>
-
-                <!-- Social Icons -->
                 <div class="social-icons">
-                    <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-link" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    @for (s of socialLinks; track s.title) {
+                    <a [href]="s.href" class="social-link" [title]="s.title">
+                        <i class="fab {{ s.icon }}"></i>
+                    </a>
+                    }
                 </div>
+            </div>
+        </div>
+
+        <!-- ── Mobile Accordion (<768 px) ── -->
+        <mat-accordion class="mobile-accordion" multi="false">
+            @for (col of columns; track col.heading) {
+            <mat-expansion-panel class="footer-panel">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>{{ col.heading }}</mat-panel-title>
+                </mat-expansion-panel-header>
+                <ul class="footer-list">
+                    @for (link of col.links; track link) {
+                    <li><a href="#">{{ link }}</a></li>
+                    }
+                </ul>
+            </mat-expansion-panel>
+            }
+        </mat-accordion>
+
+        <!-- Mobile connect (always visible) -->
+        <div class="mobile-connect">
+            <h4 class="footer-heading">Connect With Us</h4>
+            <div class="footer-contact">
+                <mat-icon fontSet="material-symbols-outlined">phone_in_talk</mat-icon>
+                <span>023 999 000</span>
+            </div>
+            <div class="social-icons">
+                @for (s of socialLinks; track s.title) {
+                <a [href]="s.href" class="social-link" [title]="s.title">
+                    <i class="fab {{ s.icon }}"></i>
+                </a>
+                }
             </div>
         </div>
 
     </div>
 
-    <!-- Bottom Copyright -->
+    <mat-divider class="footer-divider"></mat-divider>
+
     <div class="footer-bottom">
-        <p>&copy; 2025 Amret Microfinance Institution, All Rights Reserved.</p>
+        <p>© 2025 Amret Microfinance Institution. All Rights Reserved.</p>
     </div>
 </footer>

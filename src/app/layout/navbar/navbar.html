@@ -1,74 +1,55 @@
-<!-- Top Navbar Header -->
-<header class="navbar">
+<!-- ─── Floating Island Navbar ─── -->
+<header class="navbar-shell">
+    <mat-toolbar class="navbar-bar">
 
-    <!-- Branding -->
-    <div class="navbar-brand">
-        <span class="logo">AMRET</span>
-    </div>
+        <!-- Brand -->
+        <a routerLink="/home" class="navbar-brand">AMRET</a>
 
-    <!-- Main Desktop Menu -->
-    <nav class="desktop-menu" [class.open]="isMobileMenuOpen">
-        <a routerLink="/home" class="nav-link" (click)="isMobileMenuOpen = false">
-            <span class="material-symbols-outlined nav-icon">home</span>
-            HOME
-        </a>
-        <a routerLink="/about" class="nav-link" (click)="isMobileMenuOpen = false">
-            <span class="material-symbols-outlined nav-icon">info</span>
-            ABOUT US
-        </a>
-        <a routerLink="/products" class="nav-link" (click)="isMobileMenuOpen = false">
-            <span class="material-symbols-outlined nav-icon">inventory_2</span>
-            PRODUCTS & SERVICES
-        </a>
-        <!-- Merged PROTECTION section -->
-        <a routerLink="/protection" class="nav-link" (click)="isMobileMenuOpen = false">
-            <span class="material-symbols-outlined nav-icon">security</span>
-            PROTECTION
-        </a>
-        <a routerLink="/media" class="nav-link" (click)="isMobileMenuOpen = false">
-            <span class="material-symbols-outlined nav-icon">perm_media</span>
-            MEDIA
-        </a>
-        <a routerLink="/careers" class="nav-link" (click)="isMobileMenuOpen = false">
-            <span class="material-symbols-outlined nav-icon">work</span>
-            CAREERS
-        </a>
+        <!-- Desktop Nav Links -->
+        <nav class="desktop-nav">
+            @for (link of navLinks; track link.route) {
+            <a [routerLink]="link.route" routerLinkActive="active" mat-button class="nav-btn">
+                <mat-icon fontSet="material-symbols-outlined">{{ link.icon }}</mat-icon>
+                {{ link.label }}
+            </a>
+            }
+        </nav>
 
-        <!-- Tools for Mobile Drawer Menu -->
-        <div class="drawer-tools">
-            <!-- Custom Language Switcher (Mobile) -->
-            <div class="language-selector" (click)="toggleLangDropdown($event)">
-                <span class="material-symbols-outlined lang-icon">translate</span>
-                <span class="selected-lang">{{currentLang}}</span>
-                <span class="material-symbols-outlined dropdown-arrow">expand_more</span>
+        <!-- Spacer -->
+        <span class="flex-spacer"></span>
 
-                <div class="custom-dropdown" *ngIf="isLangDropdownOpen">
-                    <div class="dropdown-item" (click)="setLanguage('ENGLISH')">ENGLISH</div>
-                    <div class="dropdown-item" (click)="setLanguage('KHMER')">KHMER</div>
-                </div>
-            </div>
-        </div>
-    </nav>
+        <!-- Language Switcher (Desktop) -->
+        <button mat-button class="lang-btn" [matMenuTriggerFor]="langMenu">
+            <mat-icon fontSet="material-symbols-outlined">translate</mat-icon>
+            {{ currentLang }}
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #langMenu="matMenu" class="amret-menu">
+            <button mat-menu-item (click)="setLanguage('EN')">English</button>
+            <button mat-menu-item (click)="setLanguage('KH')">ភាសាខ្មែរ</button>
+        </mat-menu>
 
-    <!-- Right-Side Action Tools -->
-    <div class="navbar-tools">
-
-        <!-- Custom Language Selector (Desktop) -->
-        <div class="language-selector top-desktop-tools" (click)="toggleLangDropdown($event)">
-            <span class="material-symbols-outlined lang-icon">translate</span>
-            <span class="selected-lang">{{currentLang}}</span>
-            <span class="material-symbols-outlined dropdown-arrow">expand_more</span>
-
-            <div class="custom-dropdown" *ngIf="isLangDropdownOpen">
-                <div class="dropdown-item" (click)="setLanguage('ENGLISH')">ENGLISH</div>
-                <div class="dropdown-item" (click)="setLanguage('KHMER')">KHMER</div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu Icon -->
-        <button class="mobile-toggle" (click)="toggleMobileMenu()">
-            <span class="material-symbols-outlined">{{ isMobileMenuOpen ? 'close' : 'menu' }}</span>
+        <!-- Mobile Hamburger -->
+        <button mat-icon-button class="mobile-toggle" (click)="toggleMobileMenu()"
+            [attr.aria-label]="isMobileMenuOpen ? 'Close menu' : 'Open menu'">
+            <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
         </button>
 
-    </div>
+    </mat-toolbar>
 </header>
+
+<!-- Mobile Drawer -->
+@if (isMobileMenuOpen) {
+<div class="mobile-drawer">
+    @for (link of navLinks; track link.route) {
+    <a [routerLink]="link.route" routerLinkActive="active" mat-button class="drawer-link"
+        (click)="isMobileMenuOpen = false">
+        <mat-icon fontSet="material-symbols-outlined">{{ link.icon }}</mat-icon>
+        {{ link.label }}
+    </a>
+    }
+    <mat-divider></mat-divider>
+    <button mat-button class="drawer-lang" (click)="setLanguage('EN')">English</button>
+    <button mat-button class="drawer-lang" (click)="setLanguage('KH')">ភាសាខ្មែរ</button>
+</div>
+}
