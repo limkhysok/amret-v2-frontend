@@ -24,15 +24,21 @@ import { MatDividerModule } from '@angular/material/divider';
 export class Navbar {
   isMobileMenuOpen = false;
   currentLang = 'EN';
+  isScrolled = false;
 
   readonly navLinks = [
-    { label: 'Home', icon: 'home', route: '/home' },
-    { label: 'About Us', icon: 'info', route: '/about' },
-    { label: 'Products & Services', icon: 'inventory_2', route: '/products' },
-    { label: 'Protection', icon: 'security', route: '/protection' },
-    { label: 'Media', icon: 'perm_media', route: '/media' },
-    { label: 'Careers', icon: 'work', route: '/careers' },
+    { label: 'HOME', route: '/home' },
+    { label: 'ABOUT US', route: '/about' },
+    { label: 'SERVICES', route: '/products' },
+    { label: 'PROTECTION', route: '/protection' },
+    { label: 'MEDIA', route: '/media' },
+    { label: 'CAREERS', route: '/careers' },
   ];
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 30;
+  }
 
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;

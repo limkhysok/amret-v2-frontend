@@ -1,16 +1,51 @@
 <div class="home-container page-island">
 
-    <!-- ── Section 1: Marquee Carousel ── -->
-    <section class="home-carousel-island">
-        <div class="carousel-marquee">
-            <div class="marquee-content">
-                @for (img of carouselImages; track img.alt) {
-                <img [src]="img.src" [alt]="img.alt" loading="lazy">
-                }
-                <!-- Duplicate for seamless loop -->
-                @for (img of carouselImages; track img.alt + '_dup') {
-                <img [src]="img.src" [alt]="img.alt" loading="lazy">
-                }
+    <!-- ── Section 1: Hero Identity ── -->
+    <section class="hero-island">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="rank-badge">
+                    <mat-icon fontSet="material-symbols-outlined">workspace_premium</mat-icon>
+                    <span>#1 Top Microfinance</span>
+                </div>
+                <h1>Welcome to<br><span>AMRET</span></h1>
+                <p>
+                    Your trusted partner for growth. We are Cambodia’s leading microfinance institution, dedicated to
+                    delivering superior financial services to empower communities and elevate lives.
+                </p>
+                <div class="hero-actions">
+                    <button mat-flat-button class="hero-primary-btn">Get Started</button>
+                    <button mat-button class="hero-secondary-btn">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <!-- Brighter, modern corporate team/business image -->
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop"
+                        alt="Premium Bank Architecture" loading="eager">
+
+                    <!-- Floating Top Right Widget -->
+                    <div class="floating-widget top-right">
+                        <div class="widget-icon green-bg">
+                            <mat-icon fontSet="material-symbols-outlined">thumb_up</mat-icon>
+                        </div>
+                        <div class="widget-text">
+                            <strong>99%</strong>
+                            <span>Satisfaction</span>
+                        </div>
+                    </div>
+
+                    <!-- Floating Bottom Left Widget -->
+                    <div class="floating-widget bottom-left">
+                        <div class="rank-circle">
+                            <mat-icon fontSet="material-symbols-outlined">emoji_events</mat-icon>
+                        </div>
+                        <div class="widget-text">
+                            <strong>#1 Rated</strong>
+                            <span>MFI Institute</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -109,7 +144,23 @@
         </div>
     </section>
 
-    <!-- ── Section 6: Mobile Banking ── -->
+    <!-- ── Section 6: Marquee Carousel (Moved Below News) ── -->
+    <section class="home-carousel-island">
+        <div class="carousel-marquee">
+            <div class="marquee-content">
+                @for (img of carouselImages; track img.alt) {
+                <!-- Since this is now below the fold, returning to lazy loading -->
+                <img [src]="img.src" [alt]="img.alt" loading="lazy">
+                }
+                <!-- Duplicate for seamless loop -->
+                @for (img of carouselImages; track img.alt + '_dup') {
+                <img [src]="img.src" [alt]="img.alt" loading="lazy">
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Section 7: Mobile Banking ── -->
     <section class="mobile-banking-island">
         <div class="mobile-grid">
             <div class="mobile-text">

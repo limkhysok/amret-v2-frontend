@@ -1,39 +1,38 @@
 <!-- ─── Floating Island Navbar ─── -->
-<header class="navbar-shell">
+<header class="navbar-shell" [class.scrolled]="isScrolled">
     <mat-toolbar class="navbar-bar">
 
-        <!-- Brand -->
-        <a routerLink="/home" class="navbar-brand">AMRET</a>
+        <!-- Left: Brand -->
+        <div class="nav-left">
+            <a routerLink="/home" class="navbar-brand">AMRET</a>
+        </div>
 
-        <!-- Desktop Nav Links -->
+        <!-- Center: Desktop Nav Links (No Icons) -->
         <nav class="desktop-nav">
             @for (link of navLinks; track link.route) {
             <a [routerLink]="link.route" routerLinkActive="active" mat-button class="nav-btn">
-                <mat-icon fontSet="material-symbols-outlined">{{ link.icon }}</mat-icon>
                 {{ link.label }}
             </a>
             }
         </nav>
 
-        <!-- Spacer -->
-        <span class="flex-spacer"></span>
+        <!-- Right: Language Switcher & Hamburger -->
+        <div class="nav-right">
+            <button mat-button class="lang-btn" [matMenuTriggerFor]="langMenu">
+                <mat-icon fontSet="material-symbols-outlined">translate</mat-icon>
+                {{ currentLang }}
+                <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <mat-menu #langMenu="matMenu" class="amret-custom-menu">
+                <button mat-menu-item (click)="setLanguage('EN')">English</button>
+                <button mat-menu-item (click)="setLanguage('KH')">ភាសាខ្មែរ</button>
+            </mat-menu>
 
-        <!-- Language Switcher (Desktop) -->
-        <button mat-button class="lang-btn" [matMenuTriggerFor]="langMenu">
-            <mat-icon fontSet="material-symbols-outlined">translate</mat-icon>
-            {{ currentLang }}
-            <mat-icon>arrow_drop_down</mat-icon>
-        </button>
-        <mat-menu #langMenu="matMenu" class="amret-menu">
-            <button mat-menu-item (click)="setLanguage('EN')">English</button>
-            <button mat-menu-item (click)="setLanguage('KH')">ភាសាខ្មែរ</button>
-        </mat-menu>
-
-        <!-- Mobile Hamburger -->
-        <button mat-icon-button class="mobile-toggle" (click)="toggleMobileMenu()"
-            [attr.aria-label]="isMobileMenuOpen ? 'Close menu' : 'Open menu'">
-            <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
-        </button>
+            <button mat-icon-button class="mobile-toggle" (click)="toggleMobileMenu()"
+                [attr.aria-label]="isMobileMenuOpen ? 'Close menu' : 'Open menu'">
+                <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+            </button>
+        </div>
 
     </mat-toolbar>
 </header>
@@ -44,7 +43,6 @@
     @for (link of navLinks; track link.route) {
     <a [routerLink]="link.route" routerLinkActive="active" mat-button class="drawer-link"
         (click)="isMobileMenuOpen = false">
-        <mat-icon fontSet="material-symbols-outlined">{{ link.icon }}</mat-icon>
         {{ link.label }}
     </a>
     }

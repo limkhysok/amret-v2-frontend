@@ -1,104 +1,163 @@
-/* ─── Floating Island Navbar ─── */
+/* ─── Segmented Floating Dock Navbar ─── */
 .navbar-shell {
     position: fixed;
-    top: 1.25rem;
+    top: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
     width: 95%;
     max-width: 1350px;
     z-index: 1000;
     box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.25, 1);
+}
+
+/* Scroll Animation State */
+.navbar-shell.scrolled {
+    top: 0.75rem;
+    width: 98%;
+    max-width: 100%;
 }
 
 .navbar-bar {
-    background: rgba(6, 95, 70, 0.88) !important;
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-radius: 40px !important;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
-    height: 68px !important;
-    padding: 0 1.25rem !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    height: 64px !important;
+    padding: 0 !important;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.25rem;
     overflow: visible !important;
+    gap: 1.5rem;
+    /* Space between capsules */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.25, 1) !important;
 }
 
-/* Brand */
+.navbar-shell.scrolled .navbar-bar {
+    height: 56px !important;
+    gap: 0.75rem;
+    /* Bring capsules closer when scrolled */
+}
+
+/* Shared Capsule Glass Effect */
+.nav-left,
+.desktop-nav,
+.nav-right {
+    background: rgba(4, 78, 56, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 40px;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.25, 1);
+}
+
+.navbar-shell.scrolled .nav-left,
+.navbar-shell.scrolled .desktop-nav,
+.navbar-shell.scrolled .nav-right {
+    background: rgba(2, 56, 40, 0.95);
+    /* Darker and more solid when scrolled */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Part 1: Left (Brand Capsule) */
+.nav-left {
+    padding: 0 1.5rem;
+    justify-content: center;
+    flex: 0 1 auto;
+}
+
 .navbar-brand {
-    font-size: 1.55rem;
+    font-size: 1.5rem;
     font-weight: 900;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
-    flex-shrink: 0;
-    margin-right: 0.5rem;
 }
 
-/* Desktop Nav */
+/* Part 2: Center (Navigation Capsule) */
 .desktop-nav {
+    justify-content: center;
+    gap: 0.25rem;
+    flex: 1;
+    padding: 0 0.5rem;
+}
+
+/* ── Angular Material 3 Icon + Text internal alignment fix ── */
+::ng-deep .nav-btn .mdc-button__label,
+::ng-deep .lang-btn .mdc-button__label {
     display: flex;
     align-items: center;
-    gap: 0.1rem;
-    flex: 1;
+    gap: 0.35rem;
 }
 
 .nav-btn {
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-size: 0.78rem !important;
-    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
     font-family: 'DM Sans', sans-serif !important;
     border-radius: 30px !important;
     white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
+    padding: 0 1.25rem !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    position: relative;
+    overflow: visible !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    height: 75% !important;
+    /* Make buttons slightly smaller than the capsule */
 }
 
-.nav-btn mat-icon {
-    font-size: 1.15rem !important;
-    width: 1.15rem !important;
-    height: 1.15rem !important;
-    color: rgba(255, 255, 255, 0.85);
-}
-
+/* Premium Floating Bubble Hover */
 .nav-btn:hover {
-    background: rgba(255, 255, 255, 0.18) !important;
     color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: scale(1.03);
+    /* Slight zoom when bubbling */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
 }
 
+/* Active Page Indicator Bubble */
 .nav-btn.active {
-    background: rgba(255, 255, 255, 0.22) !important;
     color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    /* Much stronger frosted glass bubble for the currently active page */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Spacer */
-.flex-spacer {
-    flex: 1;
+/* Part 3: Right Side (Tools Capsule) */
+.nav-right {
+    padding: 0 1rem;
+    justify-content: center;
+    flex: 0 1 auto;
 }
 
 /* Language button */
 .lang-btn {
     color: rgba(255, 255, 255, 0.9) !important;
-    font-size: 0.8rem !important;
+    font-size: 0.85rem !important;
     font-weight: 700 !important;
     font-family: 'DM Sans', sans-serif !important;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
     border-radius: 30px !important;
-    flex-shrink: 0;
+    padding: 0 1rem !important;
+    min-width: 0 !important;
+    margin: 0 !important;
 }
 
 .lang-btn mat-icon {
-    font-size: 1.15rem !important;
-    width: 1.15rem !important;
-    height: 1.15rem !important;
+    font-size: 1.25rem !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
     color: #a7f3d0;
+    margin: 0 !important;
 }
 
 /* Mobile toggle */
@@ -181,14 +240,25 @@ mat-divider {
     color: white !important;
 }
 
-/* ─── Responsive ─── */
-@media (max-width: 1200px) {
-    .desktop-nav {
-        display: none;
+/* ─── Responsive Adjustments ─── */
+@media (max-width: 1100px) {
+    .nav-btn {
+        padding: 0 0.8rem !important;
+        font-size: 0.78rem !important;
     }
 
-    .flex-spacer {
-        flex: 1;
+    .navbar-bar {
+        gap: 0.5rem;
+    }
+
+    .nav-left {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .desktop-nav {
+        display: none;
     }
 
     .lang-btn {
@@ -197,6 +267,10 @@ mat-divider {
 
     .mobile-toggle {
         display: flex !important;
+    }
+
+    .nav-right {
+        padding: 0 0.5rem;
     }
 }
 
